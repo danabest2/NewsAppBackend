@@ -31,7 +31,7 @@ public class Category {
 
     public Category(String name) {
         this.name = name;
-        //this.articles= new ArrayList<Article>();
+        this.articles= new ArrayList<Article>();
     }
 
     public Category() {
@@ -60,4 +60,5 @@ public class Category {
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
+
 }

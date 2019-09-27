@@ -29,10 +29,10 @@ public class NewsAppProjectApplicationTests {
 	public void contextLoads() {
 	}
 
-	//@Test
-	//public void canGetCategoryName(){
-		//assertEquals("Politics", getName());
-	//}
+//	@Test
+//	public void canGetCategoryName(){
+//		assertEquals("Politics", getName());
+//	}
 
 
 }

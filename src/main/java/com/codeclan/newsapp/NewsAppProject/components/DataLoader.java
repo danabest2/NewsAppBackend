@@ -28,13 +28,13 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-        Journalist journalist = new Journalist( "Billy", "John");
+        Journalist journalist = new Journalist( "josh", "John");
         journalistRepository.save(journalist);
 
         Category category = new Category("Politics");
         categoryRepository.save(category);
 
-        Article article = new Article("Great news", 3, "More great news", "really great news",  journalist, "www.greatpic.com");
+        Article article = new Article("Great news", 3, "More great news", "really great news",  journalist, "www.greatpic.com", "2018-10-15", "politics");
         articleRepository.save(article);
     }
 }

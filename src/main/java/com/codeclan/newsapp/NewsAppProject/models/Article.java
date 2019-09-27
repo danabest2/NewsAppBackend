@@ -1,10 +1,13 @@
 package com.codeclan.newsapp.NewsAppProject.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 import java.util.List;
 
 @Entity
@@ -26,6 +29,9 @@ public class Article {
     @Column(name = "pic_url")
     private String picUrl;
 
+    @Column(name = "date")
+    private String date;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,21 +44,22 @@ public class Article {
     @JsonIgnore
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
+    @JoinTable( name = "articles_categories",
             joinColumns = {@JoinColumn(name = "article_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "category_id", nullable = false, updatable = false)}
     )
     private List<Category> categories;
 
 
-    public Article(String title, int rating, String summary, String content, Journalist journalist, String picUrl) {
+    public Article(String title, int rating, String summary, String content, Journalist journalist, Category category,  String picUrl, String date) {
         this.title = title;
         this.rating = rating;
         this.summary = summary;
         this.content = content;
         this.journalist = journalist;
-        //this.categories = new ArrayList<Category>();
+        this.categories = new ArrayList<Category>();
         this.picUrl = picUrl;
+        this.date = date;
     }
 
     public Article() {
@@ -121,4 +128,13 @@ public class Article {
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
 }
